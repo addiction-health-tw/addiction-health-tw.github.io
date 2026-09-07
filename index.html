@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>臺中榮民總醫院成癮醫學科健康資訊站</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MJCS2PNVMC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MJCS2PNVMC', { 'anonymize_ip': true });
+</script>
 <style>
 :root{--bg:#f4f6f3;--card:#fff;--ink:#263630;--muted:#68766f;--green:#416b5d;--soft:#e7efe9;--line:#e2e7e3;--warn:#fff5df}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
@@ -121,5 +129,53 @@ footer{font-size:12px;color:#78847e;text-align:center;margin-top:30px}.sources a
 </section>
 
 </main><script>
-function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
-</script></body></html>
+const pageNames={home:'首頁',unsure:'不確定是哪一種',alcohol:'酒精使用問題',drug:'藥物／物質使用問題',gamble:'賭博問題',gaming:'遊戲／網路使用問題',family:'家屬專區',help:'尋求協助'};
+function trackEvent(name,params={}){if(typeof gtag==='function')gtag('event',name,params);}
+function show(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  if(id!=='home') trackEvent('section_view',{section_id:id,section_name:pageNames[id]||id});
+}
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.includes('alcohol-check-user.github.io')){
+    trackEvent('alcohol_calculator_click',{link_url:a.href});
+  }else if(/^https?:/i.test(href)){
+    trackEvent('resource_link_click',{link_text:(a.textContent||'').trim(),link_url:a.href});
+  }
+});
+</script><script>
+function trackEvent(name, params){
+  if (typeof gtag === 'function') {
+    gtag('event', name, params || {});
+  }
+}
+
+function show(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+
+  if(id !== 'home'){
+    trackEvent('section_open', {section_name:id});
+  }
+}
+
+document.addEventListener('click', function(e){
+  const link = e.target.closest('a[href]');
+  if(!link) return;
+
+  const href = link.getAttribute('href') || '';
+  const label = (link.textContent || '').trim().slice(0,80);
+
+  if(href.includes('alcohol-check-user.github.io/alcohol-check/')){
+    trackEvent('alcohol_calculator_click', {link_text: label});
+  } else if(href.startsWith('http')){
+    trackEvent('external_resource_click', {link_text: label});
+  }
+});
+</script>
+</body></html>
