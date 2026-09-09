@@ -265,21 +265,34 @@ function trackEvent(name, params = {}) {
   }
 }
 
-function show(id) {
-  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
-  const target = document.getElementById(id);
-  if (!target) return;
-
+function show(id, updateHash = true) {
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  const target=document.getElementById(id);
+  if(!target) return;
   target.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'auto' });
-
-  if (id !== 'home') {
-    trackEvent('section_view', {
-      section_id: id,
-      section_name: pageNames[id] || id
-    });
+  window.scrollTo({top:0,behavior:'auto'});
+  if(updateHash){
+    if(id==='home'){
+      history.replaceState(null,'',window.location.pathname+window.location.search);
+    }else{
+      history.replaceState(null,'','#'+id);
+    }
+  }
+  if(id!=='home'){
+    trackEvent('section_view',{section_id:id,section_name:pageNames[id]||id});
   }
 }
+
+function openPageFromHash(){
+  const id=window.location.hash.slice(1);
+  if(id && pageNames[id] && document.getElementById(id)){
+    show(id,false);
+  }else{
+    show('home',false);
+  }
+}
+window.addEventListener('DOMContentLoaded',openPageFromHash);
+window.addEventListener('hashchange',openPageFromHash);
 
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href]');
