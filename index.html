@@ -24,6 +24,40 @@ h1{font-size:30px;line-height:1.3;margin:8px 0 12px}h2{font-size:21px;margin:0 0
 .link{color:var(--green);text-decoration:underline}.check{list-style:none!important;padding-left:0!important}.check li{padding:6px 0}.check li:before{content:"□ ";font-weight:700;color:var(--green)}
 footer{font-size:12px;color:#78847e;text-align:center;margin-top:30px}.sources a{display:block;color:var(--green);margin:7px 0;word-break:break-word}
 @media(max-width:430px){h1{font-size:28px}.card{padding:16px;min-height:145px}.grid{gap:9px}}
+
+/* ===== 裝飾版本 1：柔和自然 ===== */
+body{
+  background:
+    radial-gradient(circle at 8% 4%, rgba(65,107,93,.07) 0 90px, transparent 91px),
+    radial-gradient(circle at 94% 18%, rgba(65,107,93,.045) 0 125px, transparent 126px),
+    var(--bg);
+}
+.hero{
+  position:relative; overflow:hidden;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(226,231,227,.9);
+  border-radius:26px;
+  padding:28px 24px 24px;
+  margin-bottom:14px;
+}
+.hero:after{
+  content:"";
+  position:absolute; width:92px; height:92px; right:-25px; top:-30px;
+  border:1px solid rgba(65,107,93,.15); border-radius:50%;
+  box-shadow:-26px 34px 0 -18px rgba(65,107,93,.08);
+}
+.card,.wide,.box,.note,.warning{position:relative}
+.card{transition:transform .18s ease, box-shadow .18s ease}
+.card:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(0,0,0,.055)}
+.box h2:after{
+  content:""; display:block; width:34px; height:2px;
+  background:rgba(65,107,93,.35); margin-top:7px; border-radius:99px;
+}
+footer:before{
+  content:""; display:block; width:38px; height:1px;
+  background:var(--line); margin:0 auto 12px;
+}
+
 </style></head>
 <body><main>
 <section id="home" class="page active">
@@ -57,7 +91,7 @@ footer{font-size:12px;color:#78847e;text-align:center;margin-top:30px}.sources a
 <div class="note">本院為「115年度台中市衛生局酒癮補助方案」醫療機構</div>
 <div class="box"><h2>可以怎麼治療？</h2><p>依個別需要，包含醫療評估、藥物治療、心理治療、個案管理及家屬支持等。</p></div>
 <div class="box"><h2>🍺 酒精量換算工具</h2><p>想了解不同酒類、容量與酒精濃度所換算的飲酒量，可使用酒精量換算器。</p>
-<a class="cta" style="text-decoration:none" href="https://alcohol-check-user.github.io/alcohol-check/" target="_blank">開啟酒精量換算器</a></div>
+<a class="cta" style="text-decoration:none" href="https://alcohol-check-user.github.io/alcohol-check/" target="_blank" rel="noopener">開啟酒精量換算器</a></div>
 <button class="cta" onclick="show('help')">我想尋求協助</button></section>
 
 <section id="drug" class="page"><span class="back" onclick="show('home')">← 回首頁</span><h1>💊 藥物／物質使用問題</h1>
@@ -85,8 +119,48 @@ footer{font-size:12px;color:#78847e;text-align:center;margin-top:30px}.sources a
 
 <section id="family" class="page"><span class="back" onclick="show('home')">← 回首頁</span><h1>❤️ 家屬專區</h1>
 <p class="lead">「我已經不知道還能怎麼幫他了。」當家人出現成癮相關問題，家屬也可能承受很大的壓力。</p>
-<div class="box"><h2>家屬常遇到的困難</h2><p>他一直說自己沒有問題，怎麼辦？</p><p>他答應不喝／不賭／不用，為什麼又開始？</p><p>他不願意看醫生，我可以先諮詢嗎？</p><p>我要一直幫他處理債務或收拾後果嗎？</p><p>怎麼談治療比較不容易變成爭吵？</p></div>
-<div class="box"><h2>可以先做三件事</h2><p><b>了解問題：</b>從生理、心理與生活環境等面向理解成癮。</p><p><b>建立界線：</b>支持家人接受協助，不代表需要無限制替他承擔所有後果。</p><p><b>尋求專業協助：</b>即使本人目前沒有治療意願，家屬仍可先與專業人員討論。</p></div>
+
+<div class="box"><h2>家屬常遇到的困難</h2>
+<p>他一直說自己沒有問題，怎麼辦？</p>
+<p>他答應不喝／不賭／不用，為什麼又開始？</p>
+<p>他不願意看醫生，我可以先諮詢嗎？</p>
+<p>我要一直幫他處理債務或收拾後果嗎？</p>
+<p>怎麼談治療比較不容易變成爭吵？</p>
+</div>
+
+<div class="box"><h2>我該怎麼跟他談？</h2>
+<p>可以選擇對方較清醒、情緒較穩定的時候談，描述你實際觀察到的事情與你的擔心，例如：「最近你喝完酒好幾次跌倒，我有點擔心你的身體。」</p>
+<p>盡量避免在對方酒醉、使用物質後或情緒激動時爭論，也避免責備、羞辱或反覆逼問「你到底為什麼不改」。</p>
+</div>
+
+<div class="box"><h2>他不願意接受治療，我還能做什麼？</h2>
+<p><b>他不願意治療，不代表家屬什麼都不能做。</b></p>
+<p>家屬可以先尋求專業諮詢，了解成癮問題、溝通方式、可以設定哪些界線，以及遇到危險狀況時該如何處理。</p>
+<p>有時候，第一個走進醫療體系的人，可以是家屬。</p>
+</div>
+
+<div class="box"><h2>幫忙，不等於替他承擔所有後果</h2>
+<p>支持與替對方收拾所有後果，是不一樣的。家屬可以關心、陪同就醫、提供治療資訊，但不一定需要替對方隱瞞問題、借錢、償還賭債，或一次又一次承擔因飲酒、藥物或賭博造成的後果。</p>
+<p>每個家庭情況不同，界線也不一定相同；如果不知道怎麼拿捏，可以和專業人員一起討論。</p>
+</div>
+
+<div class="warning"><h2>⚠️ 哪些狀況不要自己處理？</h2>
+<p>如果對方出現意識不清、呼吸異常、抽搐、嚴重混亂或躁動，或有自傷、傷人、暴力等立即危險，請先確保自身安全並尋求緊急協助。</p>
+<p>不需要在危險當下試圖說服對方接受治療。</p>
+</div>
+
+<div class="box"><h2>家屬自己也可以求助</h2>
+<p>長期陪伴有成癮問題的家人，可能讓人感到生氣、失望、焦慮、疲累，甚至不知道自己還能做多少。</p>
+<p><b>你不需要等到對方願意改變，才有資格尋求協助。</b></p>
+<p>如果這件事已經影響你的情緒、睡眠、工作、家庭生活或安全，也可以先為自己尋求心理支持或專業諮詢。</p>
+</div>
+
+<div class="box"><h2>可以先做三件事</h2>
+<p><b>了解問題：</b>從生理、心理與生活環境等面向理解成癮。</p>
+<p><b>建立界線：</b>支持家人接受協助，不代表需要無限制替他承擔所有後果。</p>
+<p><b>尋求專業協助：</b>即使本人目前沒有治療意願，家屬仍可先與專業人員討論。</p>
+</div>
+
 <button class="cta" onclick="show('help')">看看求助方式</button></section>
 
 <section id="help" class="page"><span class="back" onclick="show('home')">← 回首頁</span>
@@ -133,54 +207,60 @@ footer{font-size:12px;color:#78847e;text-align:center;margin-top:30px}.sources a
 <footer>本網站內容提供一般健康衛教與求助資訊，無法取代醫師或其他專業人員之個別評估、診斷與治療。門診時間可能因院方調整而異，實際診次請以院方公告為準。</footer>
 </section>
 
-</main><script>
-const pageNames={home:'首頁',unsure:'不確定是哪一種',alcohol:'酒精使用問題',drug:'藥物／物質使用問題',gamble:'賭博問題',gaming:'遊戲／網路使用問題',family:'家屬專區',help:'尋求協助'};
-function trackEvent(name,params={}){if(typeof gtag==='function')gtag('event',name,params);}
-function show(id){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
-  if(id!=='home') trackEvent('section_view',{section_id:id,section_name:pageNames[id]||id});
-}
-document.addEventListener('click',function(e){
-  const a=e.target.closest('a');
-  if(!a)return;
-  const href=a.getAttribute('href')||'';
-  if(href.includes('alcohol-check-user.github.io')){
-    trackEvent('alcohol_calculator_click',{link_url:a.href});
-  }else if(/^https?:/i.test(href)){
-    trackEvent('resource_link_click',{link_text:(a.textContent||'').trim(),link_url:a.href});
-  }
-});
-</script><script>
-function trackEvent(name, params){
+</main>
+<script>
+const pageNames = {
+  home: '首頁',
+  unsure: '不確定是哪一種',
+  alcohol: '酒精使用問題',
+  drug: '藥物／物質使用問題',
+  gamble: '賭博問題',
+  gaming: '遊戲／網路使用問題',
+  family: '家屬專區',
+  help: '尋求協助'
+};
+
+function trackEvent(name, params = {}) {
   if (typeof gtag === 'function') {
-    gtag('event', name, params || {});
+    gtag('event', name, params);
   }
 }
 
-function show(id){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
+function show(id) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (!target) return;
 
-  if(id !== 'home'){
-    trackEvent('section_open', {section_name:id});
+  target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'auto' });
+
+  if (id !== 'home') {
+    trackEvent('section_view', {
+      section_id: id,
+      section_name: pageNames[id] || id
+    });
   }
 }
 
-document.addEventListener('click', function(e){
+document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href]');
-  if(!link) return;
+  if (!link) return;
 
   const href = link.getAttribute('href') || '';
-  const label = (link.textContent || '').trim().slice(0,80);
+  const label = (link.textContent || '').trim().slice(0, 80);
 
-  if(href.includes('alcohol-check-user.github.io/alcohol-check/')){
-    trackEvent('alcohol_calculator_click', {link_text: label});
-  } else if(href.startsWith('http')){
-    trackEvent('external_resource_click', {link_text: label});
+  if (href.includes('alcohol-check-user.github.io/alcohol-check/')) {
+    trackEvent('alcohol_calculator_click', {
+      link_text: label,
+      link_url: link.href
+    });
+  } else if (/^https?:/i.test(href)) {
+    trackEvent('external_resource_click', {
+      link_text: label,
+      link_url: link.href
+    });
   }
 });
 </script>
-</body></html>
+</body>
+</html>
